@@ -2,7 +2,7 @@ export const handler = async (event) => {
   console.log("Event received:", event);
 
   const body = {
-    message: "User added event triggered",
+    message: "User added event triggered!",
     user: event.user || "demo-user",
   };
 
