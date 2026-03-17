@@ -1,0 +1,15 @@
+service: user-event-lambda
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: ap-south-1
+
+functions:
+  userEvent:
+    handler: src/handler.handler
+    events:
+      - http:
+          path: user
+          method: post
+          cors: true
