@@ -1,7 +1,6 @@
-export const handler = async (event) => {
+exports.handler = async (event) => {
   console.log("Event received:", event);
 
-  // ✅ parse API Gateway body
   const data = JSON.parse(event.body || "{}");
 
   const body = {
