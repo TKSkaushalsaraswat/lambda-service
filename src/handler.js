@@ -1,12 +1,15 @@
 export const handler = async (event) => {
   console.log("Event received:", event);
 
-  let data = {};
+  let data;
 
   try {
-    data = JSON.parse(event.body || "{}");
+    data =
+      typeof event.body === "string"
+        ? JSON.parse(event.body)
+        : event.body || {};
   } catch (e) {
-    console.log("Body parse error");
+    data = {};
   }
 
   const body = {
@@ -16,6 +19,9 @@ export const handler = async (event) => {
 
   return {
     statusCode: 200,
+    headers: {
+      "Content-Type": "application/json",
+    },
     body: JSON.stringify(body),
   };
 };
