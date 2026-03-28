@@ -4,7 +4,7 @@ exports.handler = async (event) => {
   const data = JSON.parse(event.body || "{}");
 
   const body = {
-    message: "User added event triggered!",
+    message: "User added event triggered",
     user: data.user || "demo-user",
   };
 
