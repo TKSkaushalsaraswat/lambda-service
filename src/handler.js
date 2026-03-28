@@ -1,10 +1,16 @@
-exports.handler = async (event) => {
+export const handler = async (event) => {
   console.log("Event received:", event);
 
-  const data = JSON.parse(event.body || "{}");
+  let data = {};
+
+  try {
+    data = JSON.parse(event.body || "{}");
+  } catch (e) {
+    console.log("Body parse error");
+  }
 
   const body = {
-    message: "User added event triggered",
+    message: "User added event triggered!",
     user: data.user || "demo-user",
   };
 
